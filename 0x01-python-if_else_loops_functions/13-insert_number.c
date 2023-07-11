@@ -5,8 +5,8 @@
  * @head: The head of the linked list is a pointer
  * @number: Insert the number
  *
- * Return: NULL if it fails
- * Or return a pointer to the new node.
+ * Return: the address of the new node
+ * Or NULL if it failed
  */
 listint_t *insert_node(listint_t **head, int number)
 {
