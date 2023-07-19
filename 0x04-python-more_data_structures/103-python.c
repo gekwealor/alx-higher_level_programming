@@ -1,9 +1,10 @@
 #include <stdio.h>
 
+
 /**
  * print_python_bytes - A function that prints bytes information
  *
- * @p: PyObject *p
+ * @p: Python Object
  * Return: no return
  */
 void print_python_bytes(PyObject *p)
@@ -32,7 +33,7 @@ void print_python_bytes(PyObject *p)
 	printf("  first %ld bytes:", limit);
 
 	for (g = 0; g < limit; g++)
-		if (string[i] >= 0)
+		if (string[g] >= 0)
 			printf(" %02x", string[g]);
 		else
 			printf(" %02x", 256 + string[g]);
@@ -43,7 +44,7 @@ void print_python_bytes(PyObject *p)
 /**
  * print_python_list - A function that prints list information
  *
- * @p: PyObject *p
+ * @p: Python Object
  * Return: no return
  */
 void print_python_list(PyObject *p)
