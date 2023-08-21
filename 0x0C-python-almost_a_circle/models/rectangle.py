@@ -8,12 +8,13 @@ class Rectangle(Base):
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """Initialize a new Rectangle.
+
         Args:
-           width (int): The width of the new Rectangle.
-           height (int): The height of the new Rectangle.
-           x (int): The x coordinate of the new Rectangle.
-           y (int): The y coordinate of the new Rectangle.
-           id (int): The identity of the new Rectangle.
+            width (int): The width of the new Rectangle.
+            height (int): The height of the new Rectangle.
+            x (int): The x coordinate of the new Rectangle.
+            y (int): The y coordinate of the new Rectangle.
+            id (int): The identity of the new Rectangle.
         Raises:
             TypeError: If either of width or height is not an int.
             ValueError: If either of width or height <= 0.
@@ -28,7 +29,7 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        """Set/get the widthe of Rectangle"""
+        """Set/get the width of the Rectangle."""
         return self.__width
 
     @width.setter
@@ -47,9 +48,9 @@ class Rectangle(Base):
     @height.setter
     def height(self, value):
         if type(value) != int:
-            raise TypeError("heigt must be an integer")
+            raise TypeError("height must be an integer")
         if value <= 0:
-            raise ValueError("height must >= 0")
+            raise ValueError("height must be > 0")
         self.__height = value
 
     @property
@@ -96,6 +97,7 @@ class Rectangle(Base):
 
     def update(self, *args, **kwargs):
         """Update the Rectangle.
+
         Args:
             *args (ints): New attribute values.
                 - 1st argument represents id attribute
