@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-const callMeMoby = (x, theFunction) => {
+const function = (x, theFunction) => {
   for (; x > 0; x--) {
     theFunction();
   }
