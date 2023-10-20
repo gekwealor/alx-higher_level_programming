@@ -4,19 +4,23 @@
 """
 import sys
 import MySQLdb
+
 if __name__ == "__main__":
     """ Uses a cursor object to query"""
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
 
-    db = MySQLdb.connect(
-            host='localhost', port=3306, user=us, passwd=psd, db=dbs)
-    cursor = db.cursor()
+    conn = MySQLdb.connect(host="localhost", port=3306, user=username,
+                           passwd=password, db=dbname, charset="utf8")
 
-    cursor.execute('SELECT * FROM states ORDER BY id ASC')
+    cur = conn.cursor()
 
-    rows = cursor.fetchall()
+    cur.execute("SELECT * FROM states ORDER BY states.id ASC")
+    # HERE I have to know SQL to grab all states in my database
 
-    for row in rows:
+    query_rows = cur.fetchall()
+    for row in query_rows:
         print(row)
+    cur.close()
+    conn.close()
