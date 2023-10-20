@@ -7,20 +7,20 @@ import MySQLdb
 
 if __name__ == "__main__":
     """ Uses a cursor object to query"""
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
+    us = sys.argv[1]
+    ps = sys.argv[2]
+    dbs = sys.argv[3]
 
-    conn = MySQLdb.connect(host="localhost", port=3306, user=username,
-                           passwd=password, db=dbname, charset="utf8")
+     db = MySQLdb.connect(
+            host='localhost', port=3306, user=us, passwd=ps, db=dbs)
+    cursor = db.cursor()
 
-    cur = conn.cursor()
+    cursor.execute('SELECT * FROM states ORDER BY id ASC')
 
-    cur.execute("SELECT * FROM states ORDER BY states.id ASC")
-    # HERE I have to know SQL to grab all states in my database
+    states = cursor.fetchall()
 
-    query_rows = cur.fetchall()
-    for row in query_rows:
-        print(row)
-    cur.close()
-    conn.close()
+    for state in states:
+        print(state)
+
+    cusor.close()
+	db.close()
