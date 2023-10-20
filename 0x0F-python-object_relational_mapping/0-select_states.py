@@ -4,7 +4,7 @@
 """
 import sys
 import MySQLdb
-if __name__ == '__main__':
+if __name__ == "__main__":
     """ Uses a cursor object to query"""
     username = sys.argv[1]
     password = sys.argv[2]
