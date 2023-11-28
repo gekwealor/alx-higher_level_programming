@@ -1,17 +1,31 @@
 #!/usr/bin/node
-// Script that prints all movies of the
-// character Wedge Antilles
-
-const url = process.argv[2];
 const request = require('request');
 
-request(url, (error, response, body) => {
-  if (error) {
-    console.log(error);
-    return;
-  }
-  const movie = JSON.parse(body).results;
-  const wedge = movie.filter(movie => movie.characters.includes(
-    'https://swapi-api.alx-tools.com/api/people/14/'));
-  console.log(wedge.length);
-});
+// Wedge Antilles movies count
+function countMovies (apiEndpoint) {
+  const characterId = 18;
+  request.get(apiEndpoint, function (error, response, body) {
+    if (error) {
+      console.log(error);
+    } else {
+      const films = JSON.parse(body).results;
+      let count = 0;
+      for (let i = 0; i < films.length; i++) {
+        const characters = films[i].characters;
+        for (let j = 0; j < characters.length; j++) {
+          if (characters[j].includes(characterId)) {
+            count++;
+          }
+        }
+      }
+      console.log(count);
+    }
+  });
+}
+
+const args = process.argv.slice(2);
+
+if (args.length === 1) {
+  const apiEndpoint = args[0];
+  countMovies(apiEndpoint);
+}
